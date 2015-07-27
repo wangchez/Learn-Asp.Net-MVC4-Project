@@ -1,0 +1,53 @@
+﻿@model IList<TobyStudentManagementSystem.Models.TobyClassLookupTable>
+@{
+    ViewBag.Title = "Payment";
+}
+<div class="well">
+    <button id="add_payment" type="button" class="btn btn-primary">Add</button>
+    <input id="filter_droplist" />
+    <input id="date_limit"><span class="label label-primary">DateLimit</span>
+    <div class="panel-group" id="accordion">
+        @foreach (var m in Model)
+        {
+            <div class="panel panel-default" data-bind="visible: filterContent(@m.Id).length > 0">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse@(m.Id)">
+                            @m.ClassName
+                        </a>
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </h4>
+                </div>
+                <div id="collapse@(m.Id)" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <table id="payment_table" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>StudentName</th>
+                                    <th>PaymnetName</th>
+                                    <th>Payment</th>
+                                    <th>DeadLine</th>
+                                    <th>PaymentDate</th>
+                                </tr>
+                            </thead>
+                            <tbody data-bind="foreach: filterContent(@m.Id)">
+                                <tr data-bind="click: $root.editedPayment">
+                                    <td data-bind="text: student_name"></td>
+                                    <td data-bind="text: payment_name"></td>
+                                    <td data-bind="text: payment"></td>
+                                    <td data-bind="text: deadline"></td>
+                                    <td data-bind="text: payment_date"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>           
+        }
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript" src="~/Scripts/default/Payment.js"></script>
+}

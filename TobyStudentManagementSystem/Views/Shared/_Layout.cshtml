@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - TobyManagerSystem</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/fullcalendars/css", "~/Content/kendos/css")
+    @Styles.Render("~/Content/bootstrap/base")
+    @Styles.Render("~/Content/bootstrap/theme")
+</head>
+<body>
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title">TOBY<img src="~/Images/moomin.png" /></p>
+            </div>
+            <div class="float-right">
+                <nav>
+                    <ul id="menu">
+                        <li><span class="glyphicon glyphicon-calendar"></span>@Html.ActionLink("Schedule", "Index", "Home")</li>
+                        <li><span class="glyphicon glyphicon-usd"></span>@Html.ActionLink("Payment", "PaymentList", "Payment")</li>
+                        <li><span class="glyphicon glyphicon-time"></span>@Html.ActionLink("Statistics", "Index", "Statistics")</li>
+                        <li class="dropdown"><span class="glyphicon glyphicon-leaf"></span>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analysis<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("DataInput", "Index", "Analysis")
+                                </li>
+                                <li>@Html.ActionLink("AnalysisChart", "AnalysisChart", "Analysis")
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <span class="glyphicon glyphicon-list-alt"></span>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Backstage<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Teacher", "TeacherLookup", "Common")
+                                </li>
+                                <li>@Html.ActionLink("TobyClass", "TobyClassLookup", "Common")
+                                </li>
+                                <li>@Html.ActionLink("School", "SchoolLookup", "Common")
+                                </li>
+                                <li>@Html.ActionLink("Student", "StudentLookup", "Common")
+                                </li>
+                                <li>@Html.ActionLink("WorkType", "WorkTypeLookup", "Common")
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div id="wrap">
+        <div id="body" class="container">
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery", "~/bundles/jqueryui", "~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/googlechart")
+    @Scripts.Render("~/bundles/knockouts", "~/bundles/kendos")
+    @Scripts.Render("~/bundles/fullcalendars")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

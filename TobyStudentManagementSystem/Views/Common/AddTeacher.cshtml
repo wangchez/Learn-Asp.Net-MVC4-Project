@@ -1,0 +1,26 @@
+﻿@model TobyStudentManagementSystem.Models.TeacherModel
+
+@using (Ajax.BeginForm("SavedTeacher", null, new AjaxOptions
+{
+    OnSuccess = "InsertNewTeacher",
+    OnFailure = "ErrorPage",
+    HttpMethod = "POST"
+}, new { id = "teacher_addform", @class = "form-horizontal", role = "form" }))
+{   
+    <div class="well">
+        <div class="form-group">
+            <label for="teacher_name" class="col-lg-4">
+                Name:</label>
+            <div class="col-lg-4">
+                @Html.TextBoxFor(m => m.Name, new { required = "required", id = "teacher_name" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="teacher_english_name" class="col-lg-4">
+                English Name:</label>
+            <div class="col-lg-4">
+                @Html.TextBoxFor(m => m.EnglishName, new { id = "teacher_english_name" })
+            </div>
+        </div>
+    </div>
+}

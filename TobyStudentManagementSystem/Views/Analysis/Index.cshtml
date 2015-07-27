@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Analysis";
+}
+<div class="well">
+    <div class="col-lg-6">
+        <div class="input-group">
+            <input id="input_data" type="text" class="form-control">
+            <span class="input-group-btn">
+                <button id="search_student" class="btn btn-success" type="button">Search</button>
+                <button id="add_gradeitem" type="button" class="btn btn-primary" disabled="disabled">Add</button>
+                <span id="search_result" class="label label-info" data-bind="text: student_name"></span>
+            </span>
+        </div>
+    </div>
+    <table id="gradeitem_table" class="table table-hover">
+        <thead>
+            <tr>
+                <th>Score</th>
+                <th>ExamName</th>
+                <th>ExamDate</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: gradeItems, visible: gradeItems().length > 0">
+            <tr>
+                <td data-bind="text: grade"></td>
+                <td data-bind="text: exam_name"></td>
+                <td data-bind="text: exam_date"></td>
+                <td>
+                    <button type="button" class="btn btn-default" data-bind="click: $root.editedGradeItem">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button type="button" class="btn btn-default" data-bind="click: $root.removedGradeItem">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript" src="~/Scripts/default/Analysis.js"></script>
+}
+

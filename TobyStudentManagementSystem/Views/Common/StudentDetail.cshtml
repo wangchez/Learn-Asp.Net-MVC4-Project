@@ -1,0 +1,83 @@
+﻿@model TobyStudentManagementSystem.Models.StudentModel
+
+@using (Ajax.BeginForm("SavedStudent", new { Id = Model.Id }, new AjaxOptions
+{
+    OnFailure = "ErrorPage",
+    HttpMethod = "POST"
+}, new { id = "student_editedform", @class = "form-horizontal", role = "form" }))
+{   
+    <div class="well">
+        <div class="form-group">
+            <label for="student_name" class="col-lg-4">
+                Name:</label>
+            <div class="col-lg-4">
+                @Html.TextBoxFor(m => m.Name, new { required = "required", id = "student_name" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="student_enname" class="col-lg-4">
+                English Name:</label>
+            <div class="col-lg-4">
+                @Html.TextBoxFor(m => m.EnglishName, new { id = "student_enname" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="school_droplist" class="col-lg-4">
+                School Name:</label>
+            <div class="col-lg-4">
+                <input id="school_droplist" name="SchoolId" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="grade_no" class="col-lg-4">
+                Grade:</label>
+            <div class="col-lg-4">
+                @Html.TextBoxFor(m => m.Grade, new { id = "grade" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tobyclass_droplist" class="col-lg-4">
+                Toby Class:</label>
+            <div class="col-lg-4">
+                <input id="tobyclass_droplist" name="TobyClassId" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="contact_name" class="col-lg-4">
+                Contact:</label>
+            <div class="col-lg-4">
+                @Html.TextBoxFor(m => m.Contact, new { id = "contact_name" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phone_number" class="col-lg-4">
+                Phone Number:</label>
+            <div class="col-lg-4">
+                @Html.TextBoxFor(m => m.PhoneNumber, new { id = "phone_number" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="birthday_picker" class="col-lg-4">
+                Birthday:</label>
+            <div class="col-lg-4">
+                @if (Model.BirthDay.HasValue)
+                {
+                    <input id="birthday_picker" name="BirthDay" data-temp-year="@Model.BirthDay.Value.Year"
+                    data-temp-month="@Model.BirthDay.Value.Month"
+                    data-temp-day="@Model.BirthDay.Value.Day"/>
+                }
+                else
+                {
+                    <input id="birthday_picker" name="BirthDay" />
+                }
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address" class="col-lg-4">
+                Address:</label>
+            <div class="col-lg-4">
+                @Html.TextBoxFor(m => m.Address, new { id = "address" })
+            </div>
+        </div>
+    </div>
+}

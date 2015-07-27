@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "WorkTypeInfo";
+}
+<div class="well">
+    <button id="add_worktype" type="button" class="btn btn-primary">Add</button>
+    <table id="worktype_lut_table" class="table table-hover">
+        <thead>
+            <tr>
+                <th>Type Name</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: types, visible: types().length > 0">
+            <tr>
+                <td data-bind="text: type_name"></td>
+                <td>
+                    <button type="button" class="btn btn-default" data-bind="click: $root.editedWorkType">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button type="button" class="btn btn-default" data-bind="click: $root.removedWorkType">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@section scripts
+{
+    <script type="text/javascript" src="~/Scripts/default/WorkTypeCommon.js"></script>
+}

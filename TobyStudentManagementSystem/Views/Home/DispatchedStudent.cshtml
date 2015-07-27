@@ -1,0 +1,19 @@
+﻿@model IList<TobyStudentManagementSystem.Models.StudentViewModel>
+@if (Model == null || Model.Count == 0)
+{
+    <div class="col-lg-offset-6 col-lg-2">
+        <h4>
+            <span class="label label-warning">No Result</span></h4>
+    </div>
+}
+else
+{
+    <ul class="list-group">
+        @foreach (var student in Model)
+        {                     
+            <li class="list-group-item col-lg-7">
+                <input id="@student.StudentId" name="checked_student" type="checkbox">
+                <span class="badge">@student.StudentName</span></li>
+        }
+    </ul>
+}

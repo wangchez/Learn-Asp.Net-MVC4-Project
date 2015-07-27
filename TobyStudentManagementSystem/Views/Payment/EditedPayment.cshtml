@@ -1,0 +1,60 @@
+﻿@model TobyStudentManagementSystem.Models.PaymentModel
+
+<form id="editPaymentForm" class="form-horizontal" role="form">
+    <div class="well">
+        <div class="form-group">
+            <label for="payment_name" class="col-lg-4">
+                PaymentName:</label>
+            <div class="col-lg-8">
+                @Html.TextBoxFor(m => m.PaymentName, new { id = "payment_name" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="payment_amount" class="col-lg-4">
+                Payment:</label>
+            <div class="col-lg-8">
+                @Html.TextBoxFor(m => m.Payment, new { id = "payment_amount" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="datepicker_deadline" class="col-lg-4">
+                DeadLine:</label>
+            <div class="col-lg-8">
+                @if (Model.PaymentDeadLine.HasValue)
+                {
+                    <input id="datepicker_deadline" data-temp-year="@Model.PaymentDeadLine.Value.Year"
+                    data-temp-month="@Model.PaymentDeadLine.Value.Month"
+                    data-temp-day="@Model.PaymentDeadLine.Value.Day"/>
+                }
+                else
+                {
+                    <input id="datepicker_deadline" />
+                }
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="datepicker_paydate" class="col-lg-4">
+                RegisterDate:</label>
+            <div class="col-lg-8">
+                @if (Model.PaymentDate.HasValue)
+                {
+                    <input id="datepicker_paydate" data-temp-year="@Model.PaymentDate.Value.Year"
+                    data-temp-month="@Model.PaymentDate.Value.Month"
+                    data-temp-day="@Model.PaymentDate.Value.Day"/>
+                }
+                else
+                {
+                    <input id="datepicker_paydate" />
+                }
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="student_name" class="col-lg-4">
+                StudentName:</label>
+            <div class="col-lg-8">
+                <input id="student_name" type="text" disabled="disabled" />
+            </div>
+        </div>
+    </div>
+</form>
+

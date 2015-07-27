@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div id="dialog">
+</div>
+<div id="control_panel" class="btn-group col-lg-8">
+    <button id="search" type="button" class="btn btn-info">
+        Search</button>
+    <button id="generate" type="button" class="btn btn-warning">
+        GenerateFix</button>
+    <button id="scheduler" type="button" class="btn btn-danger">
+        Dispatch</button>
+    <button id="get_schedule" type="button" class="btn btn-success">GetSchedule</button>
+</div>
+<div class="col-lg-6" id="student_info">
+    <div id="target" data-bind="if: currentStudent">
+        <h4>
+            <span class="label label-success" data-bind="text: currentStudent"></span>
+            @*<a id="remove_icon" class="badge"><span class="glyphicon glyphicon-remove"></span></a>*@
+        </h4>
+    </div>
+</div>
+<div id='calendar' class="container" style='margin: 2em 0'>
+</div>
+@section scripts
+{
+    <script type="text/javascript" src="~/Scripts/default/Scheduler.js"></script>
+}

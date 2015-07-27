@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "TeacherInfo";
+}
+<div class="well">
+    <button id="add_teacher" type="button" class="btn btn-primary">Add</button>
+    <table id="teacher_lut_table" class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>English Name</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: teachers, visible: teachers().length > 0">
+            <tr>
+                <td data-bind="text: name"></td>
+                <td data-bind="text: en_name"></td>
+                <td>
+                    <button type="button" class="btn btn-default" data-bind="click: $root.editedTeacher">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button type="button" class="btn btn-default" data-bind="click: $root.removedTeacher">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript" src="~/Scripts/default/TeacherCommon.js"></script>
+}

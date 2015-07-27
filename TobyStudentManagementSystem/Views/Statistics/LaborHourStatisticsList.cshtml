@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Statistics";
+}
+<div class="well">
+    <input id="range_picker" />
+    <div class="panel panel-primary"  data-bind="foreach: { data: dataSource, as: 'category' }">
+        <div class="panel-heading" data-bind="text: category.teacher_name"></div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>TypeName</th>
+                    <th>Labor Hour</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: { data: type_array, as: 'item' }">
+                <tr>
+                    <td data-bind="text: item.type_name"></td>
+                    <td data-bind="text: item.labor_hour"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script type="text/javascript" src="~/Scripts/default/Statistics.js"></script>
+}

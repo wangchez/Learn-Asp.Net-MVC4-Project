@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "StudentInfo";
+}
+<div class="well">
+    <button id="add_student" type="button" class="btn btn-primary">Add</button>
+    <input id="filter_droplist"/>
+    <table id="student_lut_table" class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>English Name</th>
+                <th>School</th>
+                <th>Grade</th>
+                <th>Toby Class</th>
+                <th>Contact</th>
+                <th>Phone Number</th>
+                <th>BirthDay</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: students, visible: students().length > 0">
+            <tr data-bind="click: $root.editedStudent">
+                <td data-bind="text: name"></td>
+                <td data-bind="text: en_name"></td>
+                <td>
+                    <select data-bind="options: $root.schools, optionsValue: '_id', value: school_id, optionsText: 'school_name', optionsCaption: 'No Select'" disabled="disabled">
+                    </select>
+                </td>
+                <td data-bind="text: grade"></td>
+                <td>
+                    <select data-bind="options: $root.toby_clases, optionsValue: '_id', value: class_id, optionsText: 'class_name', optionsCaption: 'No Select'" disabled="disabled">
+                    </select>
+                </td>
+                <td data-bind="text: contact"></td>
+                <td data-bind="text: phone"></td>
+                <td data-bind="text: birthday"></td>
+                <td data-bind="text: address"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript" src="~/Scripts/default/StudentCommon.js"></script>
+}
